@@ -6,6 +6,7 @@ import Header from './components/shared/header';
 import Login from './components/auth/login';
 import SignUp from './components/auth/signup';
 import Movie from './components/movie';
+import Home from "./components/home/index";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,6 +23,7 @@ const App = () => {
         <Header />
         <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/movie" element={<Movie/>}/>
