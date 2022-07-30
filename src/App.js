@@ -1,15 +1,17 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Template from "./components/template";
-import Header from "./components/shared/header";
-import Login from "./components/auth/login";
-import SignUp from "./components/auth/signup";
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Template from './components/template';
+import Header from './components/shared/header';
+import Login from './components/auth/login';
+import SignUp from './components/auth/signup';
+import Movie from './components/movie';
 import Home from "./components/home/index";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: #e9ecef;
+    background: #FFFFFF;
+    height: 100vh;
   }
 `;
 
@@ -20,15 +22,16 @@ const App = () => {
       <Template>
         <Header />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/movie" element={<Movie/>}/>
+        </Routes>
         </BrowserRouter>
       </Template>
     </>
-  );
-};
+  )
+}
 
 export default App;
