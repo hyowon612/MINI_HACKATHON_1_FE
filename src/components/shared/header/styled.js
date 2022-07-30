@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const HeaderSection = styled.div`
   margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
   width: 80%;
   display: flex;
   justify-content: space-between;
