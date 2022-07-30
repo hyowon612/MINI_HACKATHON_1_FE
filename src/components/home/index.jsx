@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { HomeSection, SearchInput, MoviesBlock, MovieDiv } from "./styled";
+import { 
+  HomeSection, 
+  SearchInput, 
+  MovieWrapper,
+  MoviesBlock, 
+  MovieDiv,
+  MovieImage
+} from "./styled";
+import Loading from "../../Loading";
 import Api from "../../apis/service";
+import { Link } from "react-router-dom";
 
 const api = new Api();
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
   const [wholeList, setWholeList] = useState([]); // 검색용 전체 리스트 따로 저장
   const [movieList, setMovieList] = useState([]); // 페이지에 렌더링 할 영화 리스트
   const [search, setSearch] = useState("");
@@ -19,7 +28,6 @@ const Home = () => {
 
   const getMovieData = async () => {
     try {
-      setLoading(true);
       const movie = await api.getList();
       setMovieList(movie.movies);
       setWholeList(movie.movies);
@@ -35,12 +43,8 @@ const Home = () => {
 
   useEffect(() => {
     getMovieData();
+    setLoading(true);
   }, []);
-
-  if (loading) {
-    // 로딩
-    return <div style={{ height: "100vh" }}></div>;
-  }
 
   return (
     <HomeSection>
@@ -51,18 +55,29 @@ const Home = () => {
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
+      {loading 
+      ?
+      <Loading /> 
+      : 
+      <MovieWrapper>
       {movieList.length === 0 ? (
         <h4 style={{ opacity: 0.7 }}>검색 결과가 없습니다.</h4>
       ) : (
         <MoviesBlock>
           {movieList.map((movie, idx) => (
-            <MovieDiv key={idx}>
-              <img src={movie.poster_url} alt={movie.title_eng} />
-              <span>{movie.title_kor}</span>
-            </MovieDiv>
+            <Link key={idx} style={{ textDecoration: 'none', color: 'black' }} to={`/movie/${idx+1}`}>
+              <MovieDiv>
+                <MovieImage>
+                  <img src={movie.poster_url} alt={movie.title_eng} />
+                </MovieImage>
+                <span>{movie.title_kor}</span>
+              </MovieDiv>
+            </Link>
           ))}
         </MoviesBlock>
       )}
+      </MovieWrapper>
+      }
     </HomeSection>
   );
 };

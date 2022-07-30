@@ -18,8 +18,8 @@ class Api {
     return result;
   }
 
-  async getDetail() {
-    const url = this.detailUrl;
+  async getDetail(id) {
+    const url = this.detailUrl + id;
 
     const response = await this.base.get(url);
     const result = await response.data;
@@ -27,8 +27,8 @@ class Api {
     return result;
   }
 
-  async getComments() {
-    const url = this.commentsUrl;
+  async getComments(id) {
+    const url = this.commentsUrl + id;
 
     const response = await this.base.get(url);
     const result = await response.data;

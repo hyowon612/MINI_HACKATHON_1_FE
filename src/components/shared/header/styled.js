@@ -2,12 +2,16 @@ import styled from "styled-components";
 
 export const HeaderSection = styled.div`
   margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  width: 80%;
+  height: 100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 5px 10px #0000000D;
   .isHide {
     display: none;
   }
@@ -16,9 +20,25 @@ export const HeaderSection = styled.div`
   }
 `;
 
-export const HeaderLogo = styled.h2``;
+export const HeaderWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+`;
+
+export const HeaderLogo = styled.h2`
+  cursor: pointer;
+`;
+
 export const HeaderBtnBlock = styled.div``;
+
 export const HeaderBtn = styled.button`
+  width: 95px;
+  height: 40px;
+  font-size: 14px;
+  color: #606060;
   background-color: inherit;
   border: none;
   cursor: pointer;

@@ -20,13 +20,13 @@ const App = () => {
     <>
       <GlobalStyle />
       <Template>
-        <Header />
         <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SignUp/>}/>
-          <Route path="/movie" element={<Movie/>}/>
+          <Route path="/movie/:id" element={<Movie/>}/>
         </Routes>
         </BrowserRouter>
       </Template>

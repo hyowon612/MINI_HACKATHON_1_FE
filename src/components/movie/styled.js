@@ -6,7 +6,6 @@ export const MovieSection = styled.div`
   margin: 0 auto;
   width: 1280px;
   height: 100%;
-  padding-top: 30px;
   background-color: #FFFFFF;
 `;
 
