@@ -14,8 +14,8 @@ const Staff = ({ staff }) => {
     <StaffSection>
       <StaffTitle>인물 정보</StaffTitle>
       <StaffProfileSection>
-        {staff.map((staff) => (
-          <StaffProfile>
+        {staff.map((staff, idx) => (
+          <StaffProfile key={idx}>
             <StaffImage src={staff.image_url}/>
             <StaffRole>{staff.role}</StaffRole>
             <StaffName>{staff.name}</StaffName>

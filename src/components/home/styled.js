@@ -6,24 +6,31 @@ export const HomeSection = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 export const SearchInput = styled.input`
   width: 500px;
   height: 60px;
-  border: 1px solid #F2F2F2;
-  margin-bottom: 110px;
-  padding: 7px;
+  border: 2px solid #F2F2F2;
+  margin-bottom: 70px;
+  padding: 0 20px;
   font-size: 15px;
   background-color: transparent;
   background-origin: padding-box;
   border-radius: 10px;
-  opacity: 1;
   &:hover, &:focus{
     outline: none;
   }
 `;
 
+export const MovieWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-bottom: 70px;
+`;
+
 export const MoviesBlock = styled.div`
   width: 80%;
+  margin: 0 auto;
   display: grid;
   gap: 40px 20px;
   place-content: center;
@@ -37,15 +44,30 @@ export const MoviesBlock = styled.div`
     grid-template-columns: repeat(5, 1fr);
   }
 `;
+
 export const MovieDiv = styled.div`
   display: flex;
   flex-direction: column;
-  img {
-    width: 240px;
-    height: 360px;
-    background: #ffffff;
-    margin-bottom: 7px;
-  }
+  cursor: pointer;
   span {
+    color: #606060;
+    font-weight: 500;
+  }
+`;
+
+export const MovieImage = styled.div`
+  overflow: hidden;
+  width: 240px;
+  height: 360px;
+  margin-bottom: 8px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #FFFFFF;
+    transition: all 0.3s;
+    :hover {
+      transform:scale(1.1);
+    }
   }
 `;
