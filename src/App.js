@@ -1,12 +1,31 @@
 import React from 'react';
-import Header from './components/shared/header';
+import { createGlobalStyle } from 'styled-components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Template from './components/template';
+import Header from './components/shared/header';
+import Login from './components/auth/login';
+import SignUp from './components/auth/signup';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #e9ecef;
+  }
+`;
 
 const App = () => {
   return (
-    <Template>
-      <Header/>
-    </Template>
+    <>
+      <GlobalStyle />
+      <Template>
+        <Header />
+        <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+        </Routes>
+        </BrowserRouter>
+      </Template>
+    </>
   )
 }
 
