@@ -1,7 +1,7 @@
-export const API_HOST = "https://d0cc7814-98ab-422a-b0ef-82d4165b2542.mock.pstmn.io";
+export const API_HOST = "https://334e6eae-a450-4bd1-93ba-cd6f24271194.mock.pstmn.io/";
 
 const apiUrl = {
-  list: API_HOST,
+  list: API_HOST + `/movie/movielist`,
   detail: API_HOST + `/movie/`,
   comments: API_HOST + `/movie/comments/`
 };
