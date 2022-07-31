@@ -34,13 +34,16 @@ export const MoviesBlock = styled.div`
   display: grid;
   gap: 40px 20px;
   place-content: center;
-  @media screen and (max-width: 932px) {
+  @media screen and (max-width: 832px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: 832px) and (max-width: 1132px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media screen and (min-width: 932px) and (max-width: 1268px) {
+  @media screen and (min-width: 1132px) and (max-width: 1368px) {
     grid-template-columns: repeat(4, 1fr);
   }
-  @media screen and (min-width: 1268px) {
+  @media screen and (min-width: 1368px) {
     grid-template-columns: repeat(5, 1fr);
   }
 `;
@@ -71,3 +74,6 @@ export const MovieImage = styled.div`
     }
   }
 `;
+
+export const PagingBlock = styled.div``
+export const PageDiv = styled.div``
