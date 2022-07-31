@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const HomeSection = styled.div`
   min-height: 100vh;
@@ -10,14 +10,15 @@ export const HomeSection = styled.div`
 export const SearchInput = styled.input`
   width: 500px;
   height: 60px;
-  border: 2px solid #F2F2F2;
+  border: 2px solid #f2f2f2;
   margin-bottom: 70px;
   padding: 0 20px;
   font-size: 15px;
   background-color: transparent;
   background-origin: padding-box;
   border-radius: 10px;
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     outline: none;
   }
 `;
@@ -67,13 +68,25 @@ export const MovieImage = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: #FFFFFF;
+    background: #ffffff;
     transition: all 0.3s;
     :hover {
-      transform:scale(1.1);
+      transform: scale(1.1);
     }
   }
 `;
 
-export const PagingBlock = styled.div``
-export const PageDiv = styled.div``
+export const PagingBlock = styled.div`
+  height: 50px;
+  display: flex;
+`;
+export const PageDiv = styled.div`
+  margin: 0 20px;
+  ${props => props.selected && css`
+    color: red;
+  `}
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+`;

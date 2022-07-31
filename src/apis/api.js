@@ -5,9 +5,10 @@ const apiUrl = {
     login: API_HOST + `/accounts/login`,
     signup: API_HOST + `/accounts/signup`,
   },
-  list: API_HOST + `/movie/home/`,
+  
+  list: API_HOST + `/movie/home/?page=`,
   detail: API_HOST + `/movie/`,
-  comments: API_HOST + `/movie/comments/`
+  comments: API_HOST + `/movie/comments/`,
 };
 
 export default apiUrl;

@@ -9,8 +9,8 @@ class Api {
     this.commentsUrl = apiUrl.comments;
   }
 
-  async getList() {
-    const url = this.listUrl;
+  async getList(page) {
+    const url = this.listUrl + page;
 
     const response = await this.base.get(url);
     const result = await response.data;
