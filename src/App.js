@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     background: #FFFFFF;
     height: 100vh;
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const App = () => {
