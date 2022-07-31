@@ -8,7 +8,10 @@ const apiUrl = {
   all: API_HOST + `/movie/total`,
   list: API_HOST + `/movie/home/?page=`,
   detail: API_HOST + `/movie/`,
-  comments: API_HOST + `/movie/comments/`,
+  comments: {
+    get: API_HOST + `/movie/get/`,
+    create: API_HOST + `/movie/create/`,
+  }
 };
 
 export default apiUrl;

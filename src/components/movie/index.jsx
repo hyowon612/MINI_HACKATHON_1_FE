@@ -19,7 +19,7 @@ const Movie = () => {
 
   const [detail, setDetail] = useState({});
   const [staff, setStaff] = useState([]);
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(null);
 
   const getDetailData = async () => {
@@ -60,7 +60,7 @@ const Movie = () => {
           <MovieDetail detail={detail} />
           <Staff staff={staff} />
         </MovieDataSection>
-        <Comments comments={comments} />
+        <Comments comments={comments} id={id} />
       </Wrapper>
       }
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MovieDetailSection = styled.div`
   display: flex;
-  width: 820px;
+  width: 760px;
   height: 456px;
   margin-bottom: 20px;
 `;
@@ -10,12 +10,12 @@ export const MovieDetailSection = styled.div`
 export const MoviePoster = styled.img`
   width: 324px;
   height: 456px;
-  margin-right: 40px;
+  margin-right: 20px;
   object-fit: cover;
 `;
 
 export const MovieTextSection = styled.div`
-  width: 456px;
+  width: 416px;
   height: 456px;
   background-color: #FFFFFF;
 `;
@@ -29,7 +29,7 @@ export const MovieTitleKor = styled.div`
 
 export const MovieTitleEng = styled.div`
   font-size: 16px;
-  width: 456px;
+  width: 416px;
   color: #404040;
   padding-bottom: 8px;
   border-bottom: 2px solid #F2F2F2;
@@ -60,8 +60,13 @@ export const RatingNum = styled.div`
 
 export const MovieSummary = styled.div`
   width: 100%;
+  height: 265px;
+  overflow: auto;
   font-size: 14px;
   color: #404040;
   white-space: pre-wrap;
   margin-top: 12px;
+  .::-webkit-scrollbar {
+    display: none;
+  }
 `;

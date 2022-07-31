@@ -7,7 +7,8 @@ class Api {
     this.allUrl = apiUrl.all;
     this.listUrl = apiUrl.list;
     this.detailUrl = apiUrl.detail;
-    this.commentsUrl = apiUrl.comments;
+    this.getCommentUrl = apiUrl.comments.get;
+    this.createCommentUrl = apiUrl.comments.create;
   }
   async getAll() {
     const url = this.allUrl;
@@ -37,12 +38,28 @@ class Api {
   }
 
   async getComments(id) {
-    const url = this.commentsUrl + id;
+    const url = this.getCommentUrl + id + '/';
 
+    console.log(url);
     const response = await this.base.get(url);
     const result = await response.data;
     
     return result;
+  }
+
+  async createComment(comment, username, id) {
+    const url = this.createCommentUrl + id + '/';
+
+    const body = {
+      body: comment,
+      username: username
+    };
+    const response = await axios.post(url, body);
+    const result = response;
+
+    return {
+      result,
+    };
   }
 }
 

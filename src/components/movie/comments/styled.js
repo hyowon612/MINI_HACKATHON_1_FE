@@ -5,13 +5,20 @@ export const CommentSection = styled.div`
   flex-direction: column;
   width: 380px;
   height: 700px;
+  @media screen and (max-width: 1132px) {
+    width: 760px;
+    height: 100%;
+  }
 `;
 
 export const CommentInputSection = styled.div`
   position: relative;
-  width: 100%;
+  width: 380px;
   height: 100px;
   margin-bottom: 16px;
+  @media screen and (max-width: 1132px) {
+    width: 760px;
+  }
 `;
 
 export const CommentInput = styled.textarea`
@@ -56,6 +63,10 @@ export const CommentList = styled.div`
   width: 100%;
   height: 580px;
   overflow: auto;
+  @media screen and (max-width: 1132px) {
+    height: 100%;
+    margin-bottom: 50px;
+  }
 `;
 
 export const CommentNum = styled.div`
@@ -70,7 +81,7 @@ export const CommentNum = styled.div`
 
 export const Comment = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 12px 16px;
   background-color: white;
   border-radius: 8px;
   margin-bottom: 8px;
