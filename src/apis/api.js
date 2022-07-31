@@ -9,4 +9,5 @@ const apiUrl = {
   detail: API_HOST + `/movie/`,
   comments: API_HOST + `/movie/comments/`
 };
+
 export default apiUrl;

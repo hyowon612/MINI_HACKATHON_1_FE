@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { 
-  HomeSection, 
-  SearchInput, 
+import {
+  HomeSection,
+  SearchInput,
   MovieWrapper,
-  MoviesBlock, 
+  MoviesBlock,
   MovieDiv,
-  MovieImage
+  MovieImage,
 } from "./styled";
 import Loading from "../../Loading";
 import Api from "../../apis/service";
@@ -18,19 +18,15 @@ const Home = () => {
   const [wholeList, setWholeList] = useState([]); // 검색용 전체 리스트 따로 저장
   const [movieList, setMovieList] = useState([]); // 페이지에 렌더링 할 영화 리스트
   const [search, setSearch] = useState("");
-  const handleChange = (e) => setSearch(e.target.value);
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      searchMovie();
-      setSearch(""); // 초기화
-    }
+  const handleChange = (e) => {
+    setSearch(e.target.value);
   };
 
   const getMovieData = async () => {
     try {
       const movie = await api.getList();
-      setMovieList(movie.movies);
-      setWholeList(movie.movies);
+      setMovieList(movie);
+      setWholeList(movie);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -38,13 +34,23 @@ const Home = () => {
   };
   const searchMovie = () => {
     const filterData = wholeList.filter((m) => m.title_kor.includes(search));
-    setMovieList(filterData);
+    setMovieList(
+      filterData.length === 0 // 검색 결과 없을 때 전체 리스트 보여줌
+        ? wholeList
+        : search === "" // 검색어 입력 안했을 때 전체 리스트 보여줌
+        ? wholeList
+        : filterData
+    );
   };
 
   useEffect(() => {
     getMovieData();
     setLoading(true);
   }, []);
+
+  useEffect(() => {
+    searchMovie();
+  }, [search]);
 
   return (
     <HomeSection>
@@ -53,31 +59,29 @@ const Home = () => {
         type="text"
         placeholder="검색어를 입력하세요"
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
       />
-      {loading 
-      ?
-      <Loading /> 
-      : 
-      <MovieWrapper>
-      {movieList.length === 0 ? (
-        <h4 style={{ opacity: 0.7 }}>검색 결과가 없습니다.</h4>
+      {loading ? (
+        <Loading />
       ) : (
-        <MoviesBlock>
-          {movieList.map((movie, idx) => (
-            <Link key={idx} style={{ textDecoration: 'none', color: 'black' }} to={`/movie/${idx+1}`}>
-              <MovieDiv>
-                <MovieImage>
-                  <img src={movie.poster_url} alt={movie.title_eng} />
-                </MovieImage>
-                <span>{movie.title_kor}</span>
-              </MovieDiv>
-            </Link>
-          ))}
-        </MoviesBlock>
+        <MovieWrapper>
+          <MoviesBlock>
+            {movieList.map((movie, idx) => (
+              <Link
+                key={idx}
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/movie/${idx + 1}`}
+              >
+                <MovieDiv>
+                  <MovieImage>
+                    <img src={movie.poster_url} alt={movie.title_kor} />
+                  </MovieImage>
+                  <span>{movie.title_kor}</span>
+                </MovieDiv>
+              </Link>
+            ))}
+          </MoviesBlock>
+        </MovieWrapper>
       )}
-      </MovieWrapper>
-      }
     </HomeSection>
   );
 };
