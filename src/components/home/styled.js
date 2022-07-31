@@ -25,7 +25,7 @@ export const SearchInput = styled.input`
 
 export const MovieWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin-bottom: 70px;
 `;
 
@@ -77,11 +77,14 @@ export const MovieImage = styled.div`
 `;
 
 export const PagingBlock = styled.div`
-  height: 50px;
+  margin-bottom: 35px;
   display: flex;
+  a{
+    text-decoration: none;
+  }
 `;
 export const PageDiv = styled.div`
-  margin: 0 20px;
+  margin: 0 25px;
   ${props => props.selected && css`
     color: red;
   `}
