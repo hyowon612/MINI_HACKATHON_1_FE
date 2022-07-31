@@ -21,8 +21,8 @@ const Comments = ({ comments }) => {
       <CommentNum>n개의 감상평</CommentNum>
       <CommentList>
         <Comment>
-          <CommentAuthor>{comments.author}</CommentAuthor>
-          <CommentText>{comments.body}</CommentText>
+          <CommentAuthor>{comments.username}</CommentAuthor>
+          <CommentText>{comments.post}</CommentText>
         </Comment>
       </CommentList>
     </CommentSection>
