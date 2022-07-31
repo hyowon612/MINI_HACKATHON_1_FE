@@ -19,7 +19,7 @@ class Api {
   }
 
   async getDetail(id) {
-    const url = this.detailUrl + id;
+    const url = this.detailUrl + id + '/';
 
     const response = await this.base.get(url);
     const result = await response.data;
