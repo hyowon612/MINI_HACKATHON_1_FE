@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StaffSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 820px;
+  width: 760px;
   height: 100%;
 `;
 
@@ -18,6 +18,9 @@ export const StaffProfileSection = styled.div`
   display: flex;
   overflow: scroll;
   white-space: nowrap;
+  .::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const StaffProfile = styled.div`

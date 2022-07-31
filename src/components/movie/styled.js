@@ -4,7 +4,7 @@ export const MovieSection = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  width: 1280px;
+  width: 100%;
   height: 100%;
   background-color: #FFFFFF;
 `;
@@ -12,14 +12,17 @@ export const MovieSection = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   height: 100%;
+  @media screen and (max-width: 1132px) {
+    flex-direction: column;
+  }
 `;
 
 export const MovieDataSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 820px;
+  width: 750px;
   height: 700px;
   margin-right: 80px;
 `;
