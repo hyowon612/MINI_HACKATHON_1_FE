@@ -15,9 +15,9 @@ import {
 const MovieDetail = ({ detail }) => {
   return (
     <MovieDetailSection>
-      <MoviePoster src={detail.poster_url} />
+      {/* <MoviePoster src={detail.poster_url} /> */}
       <MovieTextSection>
-        <MovieTitleKor>{detail.title_kor}</MovieTitleKor>
+        {/* <MovieTitleKor>{detail.title_kor}</MovieTitleKor> */}
         <MovieTitleEng>{detail.title_eng}</MovieTitleEng>
         <MovieDetailText>{detail.genre} | {detail.showtimes} | {detail.release_date}</MovieDetailText>
         <Rating>
@@ -30,7 +30,7 @@ const MovieDetail = ({ detail }) => {
         </Rating>
         <Rating>
           <RatingTitle>네티즌 평점</RatingTitle>
-          <RatingNum>{detail.rating_net}</RatingNum>
+          {/* <RatingNum>{detail.rating_net}</RatingNum> */}
         </Rating>
         <MovieSummary>{detail.summary}</MovieSummary>
       </MovieTextSection>

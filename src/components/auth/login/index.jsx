@@ -21,11 +21,12 @@ const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const result = await authService.login(username, password);
+      const { result } = await authService.login(username, password);
       console.log(result);
-      console.log("로그인버튼");
-      if(true) {
+      if(result === 200) {
+        localStorage.setItem('username', username);
         navigate(`/`);
+        window.location.reload();
       };
       return;
     } catch (error) {

@@ -17,14 +17,16 @@ const Movie = () => {
 
   const { id } = useParams();
 
-  const [detail, setDetail] = useState({staff: []});
+  const [detail, setDetail] = useState({});
+  const [staff, setStaff] = useState([]);
   const [comments, setComments] = useState({});
   const [loading, setLoading] = useState(null);
 
   const getDetailData = async () => {
     try {
       const movie = await api.getDetail(id);
-      setDetail(movie);
+      setDetail(movie[0]);
+      setStaff(movie[1]);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -56,7 +58,7 @@ const Movie = () => {
       <Wrapper>
         <MovieDataSection>
           <MovieDetail detail={detail} />
-          <Staff staff={detail.staff} />
+          <Staff staff={staff} />
         </MovieDataSection>
         <Comments comments={comments} />
       </Wrapper>
