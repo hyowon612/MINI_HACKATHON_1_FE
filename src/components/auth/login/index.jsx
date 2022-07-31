@@ -53,7 +53,7 @@ const Login = () => {
         />
         <PasswordInput
           onChange={handlePassword}
-          type="text" 
+          type="password" 
           placeholder="비밀번호"
         />
         <LoginButton onClick={handleSubmit}>로그인</LoginButton>

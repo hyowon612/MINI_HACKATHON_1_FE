@@ -53,7 +53,7 @@ const SignUp = () => {
         />
         <PasswordInput
           onChange={handlePassword}
-          type="text" 
+          type="password" 
           placeholder="비밀번호"
         />
         <SignUpButton onClick={handleSubmit}>회원가입</SignUpButton>
