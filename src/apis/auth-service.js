@@ -15,7 +15,7 @@ class AuthService {
       password: password
     };
     const response = await this.base.post(url, body);
-    const result = response.data.body;
+    const result = response.status;
 
     return {
       result,
@@ -29,7 +29,7 @@ class AuthService {
       password: password
     };
     const response = await this.base.post(url, body);
-    const result = response.data.body;
+    const result = response.status;
 
     return {
       result,

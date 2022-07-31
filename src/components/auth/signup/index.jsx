@@ -21,11 +21,12 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     try {
-      const result = await authService.signup(username, password);
+      const { result } = await authService.signup(username, password);
       console.log(result);
-      console.log("회원가입버튼");
-      if(true) {
+      if(result === 200) {
+        localStorage.setItem('username', username);
         navigate(`/`);
+        window.location.reload();
       };
       return;
     } catch (error) {
