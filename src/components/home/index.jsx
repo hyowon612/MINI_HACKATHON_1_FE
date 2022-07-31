@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   HomeSection,
   SearchInput,
@@ -18,10 +18,12 @@ const api = new Api();
 const Home = () => {
   const [loading, setLoading] = useState(null);
   const [wholeList, setWholeList] = useState([]); // 검색용 전체 리스트 따로 저장
+  const [moviesPerPage, setMoviesPerPage] = useState([]);
   const [movieList, setMovieList] = useState([]); // 페이지에 렌더링 할 영화 리스트
+
   const [page, setPage] = useState(1); // 현재 페이지
-  const [pages, setPages] = useState([]);
-  const [pageList, setPageList] = useState([1, 2, 3, 4, 5, 6, 7]);
+  const pages = [1, 2, 3, 4, 5]; // 보여줄 페이지 리스트
+
   const [search, setSearch] = useState("");
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -29,48 +31,47 @@ const Home = () => {
 
   const getMovieData = async () => {
     try {
+      const all = await api.getAll();
+      setWholeList(all);
+
+      // 전체 페이지 리스트 업데이트
+      // const pageCnt = Math.ceil(wholeList.length / 20);
+      // const tempPages = [];
+      // for (var i = 1; i <= pageCnt; i++) {
+      //   tempPages.push(i);
+      // }
+      // console.log("temppages", tempPages);
+      // setPages(tempPages);
+
       const movie = await api.getList(page);
-      console.log(movie);
       setMovieList(movie[1]);
-      //setWholeList(movie);
+      setMoviesPerPage(movie[1]);
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-  const pagination = (count) => {
-    // const tempPages = []; 
-    // for (var i = 1; i <= count; i++) {
-    //   tempPages.push(i); 
-    // }
-    // setPageList(tempPages); 
-    const nowPages = Math.ceil(page / 5);
-    const nowPagesList = pageList.slice(
-      ((nowPages-1) * 5), 5
-    );
-    setPages(nowPagesList);
-  };
+
   const searchMovie = () => {
     const filterData = wholeList.filter((m) => m.title_kor.includes(search));
     setMovieList(
-      filterData.length === 0 // 검색 결과 없을 때 전체 리스트 보여줌
-        ? wholeList
-        : search === "" // 검색어 입력 안했을 때 전체 리스트 보여줌
-        ? wholeList
+      filterData.length === 0 // 검색 결과 없을 때 기존 페이지의 영화 리스트 보여줌
+        ? moviesPerPage
+        : search === "" // 검색어 입력 안했을 때 기존 페이지의 영화 리스트 보여줌
+        ? moviesPerPage
         : filterData
     );
   };
 
   useEffect(() => {
     getMovieData();
-    pagination();
     setLoading(true);
   }, [page]);
 
   useEffect(() => {
     searchMovie();
   }, [search]);
-
+ 
   return (
     <HomeSection>
       <SearchInput
@@ -102,11 +103,18 @@ const Home = () => {
             </MoviesBlock>
           </MovieWrapper>
           <PagingBlock>
-        <PageDiv>←</PageDiv>
             {pages.map((p) => (
-              <PageDiv key={p} selected={page === p} onClick={() => setPage(p)}>{p}</PageDiv>
+              <PageDiv
+                key={p}
+                selected={page === p}
+                onClick={() => {
+                  setPage(p);
+                  window.scrollTo(0, 0);
+                }}
+              >
+                {p}
+              </PageDiv>
             ))}
-            <PageDiv>→</PageDiv>
           </PagingBlock>
         </>
       )}

@@ -5,7 +5,7 @@ const apiUrl = {
     login: API_HOST + `/accounts/login`,
     signup: API_HOST + `/accounts/signup`,
   },
-  
+  all: API_HOST + `/movie/total`,
   list: API_HOST + `/movie/home/?page=`,
   detail: API_HOST + `/movie/`,
   comments: API_HOST + `/movie/comments/`,

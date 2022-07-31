@@ -4,9 +4,18 @@ import apiUrl from "./api";
 class Api {
   constructor() {
     this.base = axios.create();
+    this.allUrl = apiUrl.all;
     this.listUrl = apiUrl.list;
     this.detailUrl = apiUrl.detail;
     this.commentsUrl = apiUrl.comments;
+  }
+  async getAll() {
+    const url = this.allUrl;
+
+    const response = await this.base.get(url);
+    const result = await response.data;
+    
+    return result;
   }
 
   async getList(page) {
